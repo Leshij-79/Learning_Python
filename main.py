@@ -1,7 +1,6 @@
-from src.masks import get_mask_account, get_mask_card_number
+from src.masks import mask_account_card
 
-get_account = str(input("Введите номер счёта - "))
-get_card_number = str(input("Ввкдите номер карты - "))
+get_account_card = input("Введите вид счёта или карты и его/её номер ")
 
-print(get_mask_card_number(get_card_number))
-print(get_mask_account(get_account))
+print(mask_account_card(get_account_card))
+#print(get_mask_account(get_account))
