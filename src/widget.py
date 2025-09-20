@@ -1,5 +1,6 @@
 from src.masks import get_mask_account, get_mask_card_number
 
+
 def mask_account_card(information_account_card: str) -> str:
     """Обработка данных счёта или карты"""
 
@@ -12,4 +13,4 @@ def mask_account_card(information_account_card: str) -> str:
 def get_date(information_date: str) -> str:
     """Обработка строки содержащую дату"""
 
-    return information_date[8:10]+"."+information_date[5:7]+"."+information_date[0:4]
+    return information_date[8:10] + "." + information_date[5:7] + "." + information_date[0:4]
