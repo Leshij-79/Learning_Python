@@ -1,6 +1,5 @@
 # Моё добавление
 *.toml
-tests/
 *__init__.py
 .flake8
 
