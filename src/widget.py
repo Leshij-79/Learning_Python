@@ -1,3 +1,5 @@
+from dateutil.parser import parse
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -13,4 +15,13 @@ def mask_account_card(information_account_card: str) -> str:
 def get_date(information_date: str) -> str:
     """Обработка строки содержащую дату"""
 
-    return information_date[8:10] + "." + information_date[5:7] + "." + information_date[0:4]
+    try:
+        parse(information_date[0:10], False)
+
+    except ValueError:
+        return "Дата не введена"
+
+    if information_date[2:3].isnumeric():
+        return information_date[8:10] + "." + information_date[5:7] + "." + information_date[0:4]
+    else:
+        return information_date[0:2] + "." + information_date[3:5] + "." + information_date[6:10]

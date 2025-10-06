@@ -7,8 +7,11 @@
 ## Установка зависимостей:
 
 Проект доступен для клонирования https://github.com/Leshij-79/Learning_Python
-Минимальная версия Python 3.13
-Зависимости отсутствуют.
+Минимальная версия Python 3.12
+Используются зависимости:
+
+Утилиты даты - установка pip install python-dateutil
+Примеры использования - https://stackoverflow.com/questions/25341945/check-if-string-has-date-any-format
 
 ## Использование:
 
