@@ -43,6 +43,12 @@ sort_by_date - Функция сортировки банковских опер
 ##Тестирование
 Реализовано тестирование моделей.
 Охват тестами 100%
+Данные по охвату тестами ./htmlcov/index.html
+
+Запуск тестов:
+pytest ./tests/test_masks.py
+pytest ./tests/test_processing.py
+pytest ./tests/test_widgit.py
 
 ## Лицензия:
 
