@@ -20,8 +20,8 @@ def test_filter_by_state_first(fixture_test_filter_by_state: list, test_name_sta
 
 
 @pytest.mark.parametrize("test_name_state, expected", [
-    ('EXECUTED', 'Нет данных'),
-    ('CANCELED', 'Нет данных')
+    ('EXECUTED', []),
+    ('CANCELED', [])
 ])
 def test_filter_by_state_second(test_name_state: str, expected: list):
     assert filter_by_state([], test_name_state) == expected

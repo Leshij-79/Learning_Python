@@ -16,7 +16,8 @@ def get_date(information_date: str) -> str:
     """Обработка строки содержащую дату"""
 
     try:
-        parse(information_date[0:10], False)
+#        parse(information_date[0:10], parserinfo = False)
+        parse(information_date[0:10])
 
     except ValueError:
         return "Дата не введена"

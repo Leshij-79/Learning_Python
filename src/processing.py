@@ -1,7 +1,7 @@
 def filter_by_state(bank_operaion: list, name_state: str = "EXECUTED") -> list:
     """Функция по фильтрации банковских операций по статусу"""
     if len(bank_operaion) == 0:
-        return 'Нет данных'
+        return []
 
 
     filtered_data = []
