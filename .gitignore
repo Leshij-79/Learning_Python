@@ -1,6 +1,6 @@
 # Моё добавление
 #*.toml
-*__init__.py
+#*__init__.py
 #.flake8
 
 # Byte-compiled / optimized / DLL files
