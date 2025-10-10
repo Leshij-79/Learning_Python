@@ -1,8 +1,7 @@
 # Моё добавление
-*.toml
-tests/
-*__init__.py
-.flake8
+#*.toml
+#*__init__.py
+#.flake8
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -43,7 +42,7 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
+#htmlcov/
 .tox/
 .nox/
 .coverage
