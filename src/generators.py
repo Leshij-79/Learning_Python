@@ -1,16 +1,21 @@
-from typing import Any, Generator
+from typing import Generator
 
 
 def filter_by_currency(data: list[dict], currency: str) -> Generator:
     """
     Фильтрация транзакций по заданной валюте
     """
+    counter_ = 0
     if data == []:
-        return []
+        yield {}
     else:
         for item in data:
-            if item['operationAmount']['currency']['code'] == currency:
+            if item["operationAmount"]["currency"]["code"] == currency:
+                counter_ += 1
                 yield item
+
+            if counter_ == 0:
+                yield {}
 
 
 def transaction_descriptions(data: list[dict]) -> Generator:
@@ -18,10 +23,10 @@ def transaction_descriptions(data: list[dict]) -> Generator:
     Функция вывода информации о назначении платежа по транзакции
     """
     if data == []:
-        return []
+        yield []
     else:
         for item in data:
-            yield item['description']
+            yield item["description"]
 
 
 def card_number_generator(start_number: int, end_number: int) -> Generator:
