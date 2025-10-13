@@ -6,9 +6,10 @@ authors = ["Kuprin Aleksandr <freemn8901@yandex.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = "^3.12"
 requests = "^2.32.5"
 parse = "^1.20.2"
+poetry = "^2.2.1"
 
 
 [tool.poetry.group.lint.dependencies]

@@ -7,15 +7,12 @@ def filter_by_currency(data: list[dict], currency: str) -> Generator:
     """
     counter_ = 0
     if data == []:
-        yield {}
+        yield []
     else:
         for item in data:
             if item["operationAmount"]["currency"]["code"] == currency:
                 counter_ += 1
                 yield item
-
-            if counter_ == 0:
-                yield {}
 
 
 def transaction_descriptions(data: list[dict]) -> Generator:
