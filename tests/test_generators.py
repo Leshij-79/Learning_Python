@@ -47,6 +47,11 @@ def test_transaction_descriptions(fixture_test_generator_transactions: list, ind
     assert generator_transaction_descriptions[index] == expected
 
 
+def test_transaction_descriptions_none() -> None:
+    generator_transaction_descriptions = list(transaction_descriptions([]))
+    assert generator_transaction_descriptions == [[]]
+
+
 @pytest.mark.parametrize(
     "index, expected",
     [(0, "1234 5678 9012 3456"), (1, "1234 5678 9012 3457"), (2, "1234 5678 9012 3458"), (3, "1234 5678 9012 3459")],
