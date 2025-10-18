@@ -2,7 +2,11 @@ from datetime import datetime
 from functools import wraps
 
 
-def log(filename: str = ''):
+def log(filename: str = ""):
+    """
+    Декоратор логирования выполнения функции
+    """
+
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -20,11 +24,11 @@ def log(filename: str = ''):
 
             stop_run = datetime.now()
             if filename:
-                with open(filename, 'w', encoding="utf-8") as file_:
+                with open(filename, "w", encoding="utf-8") as file_:
                     file_.write("Время начала - " + start_run.strftime("%Y-%m-%d %H:%M:%S") + "\n")
                     file_.write("Время окончания - " + stop_run.strftime("%Y-%m-%d %H:%M:%S") + "\n")
                     if error_data_bool:
-                        file_.write(func_name + " error: "+ error_data + " Inputs: " + str_args + " - " + str_kwargs)
+                        file_.write(func_name + " error: " + error_data + " Inputs: " + str_args + " - " + str_kwargs)
                     else:
                         file_.write(func_name + " ok\n")
                         file_.write("Результат выполнения - " + str(result))
@@ -42,9 +46,3 @@ def log(filename: str = ''):
         return wrapper
 
     return decorator
-
-# @log("")
-# def delenie(a, b):
-#     return a+b
-#
-# print(delenie("1", "0"))
