@@ -1,8 +1,9 @@
 from datetime import datetime
 from functools import wraps
+from typing import Any
 
 
-def log(filename: str = ""):
+def log(filename: str = "") -> Any:
     """
     Декоратор логирования выполнения функции
     """
