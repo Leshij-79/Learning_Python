@@ -6,13 +6,12 @@ def json_file_processing(file_name: str) -> list:
     Функция получения данных по транзакциям из json-файла
     """
     try:
-        with open(file_name, 'r', encoding='utf-8') as json_file:
+        with open(file_name, "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
     except FileNotFoundError:
         return []
 
-
-    if len(data) == 0 or type(data) != list:
+    if len(data) == 0 or type(data) is not list:
         return []
     else:
         return data
