@@ -1,12 +1,12 @@
 import json
-from unittest.mock import Mock, patch
+from typing import Any
+from unittest.mock import Mock, patch, mock_open
 
 from src.utils import json_file_processing
 
 
-@patch('json.load')
-def test_json_file_processing(mock_json_file) -> None:
-    mock_json = Mock()
+@patch('builtins.open',new_callable=mock_open)
+def test_json_file_processing(mock_json_file) -> Any:
     data_mock_for_test = [
         {
             "id": 441945886,
@@ -24,6 +24,8 @@ def test_json_file_processing(mock_json_file) -> None:
             "to": "Счет 64686473678894779589"
         }
     ]
-    mock_json.return_value.json.return_value = data_mock_for_test
-    result = json_file_processing(mock_json)
-    assert result == data_mock_for_test
+
+    mock_file = mock_json_file.return_value
+    mock_file.read.return_value = json.dumps(data_mock_for_test)
+
+    assert json_file_processing('') == data_mock_for_test

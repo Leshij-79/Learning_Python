@@ -28,11 +28,11 @@ def transaction_processing(transaction: dict) -> float:
 
         status_code = response.status_code
         if status_code == 200:
-            result = json.loads(response.text)
+            result = response.json()
+            # print(result)
+#            result = json.loads(response.text)
         else:
-            result = 0.00
-
-#        print(result)
+            return 0.00
 
         return round(float(result['result']),2)
 
@@ -84,4 +84,5 @@ def transaction_processing(transaction: dict) -> float:
 #     "to": "Счет 11776614605963066702"
 #   }
 #
-# print(transaction_processing(data_usd))
+#print(transaction_processing(data_usd))
+#transaction_processing(data_usd)
