@@ -1,15 +1,16 @@
 from datetime import datetime
 from functools import wraps
+from typing import Any
 
 
-def log(filename: str = ""):
+def log(filename: str = "") -> Any:
     """
     Декоратор логирования выполнения функции
     """
 
-    def decorator(func):
+    def decorator(func) -> Any:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> Any:
             start_run = datetime.now()
             func_name = func.__name__
             str_args = str(args)

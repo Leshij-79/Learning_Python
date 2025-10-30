@@ -1,9 +1,11 @@
+from typing import Any
+
 from src.decorators import log
 
 
 def test_log_file() -> None:
     @log("mylog.txt")
-    def func_test(a, b):
+    def func_test(a, b) -> Any:
         return a + b
 
     func_test("1", "2")
@@ -15,7 +17,7 @@ def test_log_file() -> None:
         assert "Результат выполнения" in read_text[3]
 
 
-def test_log_file_error() -> None:
+def test_log_file_error() -> Any:
     @log("mylog.txt")
     def func_test(a, b):
         return a + b
