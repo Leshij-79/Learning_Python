@@ -1,8 +1,8 @@
 import logging
 import os
 
-path_log_directory = os.path.join(os.path.dirname(__file__), '../logs', 'masks.log')  #  os.path.abspath('../logs')
-logger = logging.getLogger(__name__)
+path_log_directory = os.path.join(os.path.dirname(__file__), '../logs', 'masks.log')
+logger = logging.getLogger(__name__) if __name__ != '__main__' else logging.getLogger('src.masks')
 file_handler = logging.FileHandler(path_log_directory, mode = 'w', encoding = "utf-8")
 file_formatter = logging.Formatter('%(asctime)s %(name)s %(levelname)s: %(message)s')
 file_handler.setFormatter(file_formatter)

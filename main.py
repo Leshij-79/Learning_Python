@@ -11,9 +11,9 @@ if __name__ == "__main__":
     ]
 
     get_account_card = input("Введите вид счёта или карты и его/её номер - ")
-    # get_input("Введите строку даты и времени - ")
+    get_date_time = input("Введите строку даты и времени - ")
 
     print(mask_account_card(get_account_card))
-    # print(get_date(get_date_time))
-    # print(filter_by_state(list_data))
-    # print(sort_by_date(list_data))
+    print(get_date(get_date_time))
+    print(filter_by_state(list_data))
+    print(sort_by_date(list_data))
