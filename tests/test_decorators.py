@@ -4,12 +4,12 @@ from src.decorators import log
 
 
 def test_log_file() -> None:
-    @log("mylog.txt")
+    @log("logs/mylog.txt")
     def func_test(a, b) -> Any:
         return a + b
 
     func_test("1", "2")
-    with open("mylog.txt", "r", encoding="utf-8") as file_:
+    with open("logs/mylog.txt", "r", encoding="utf-8") as file_:
         read_text = file_.readlines()
         assert "Время начала" in read_text[0]
         assert "Время окончания" in read_text[1]
@@ -18,12 +18,12 @@ def test_log_file() -> None:
 
 
 def test_log_file_error() -> Any:
-    @log("mylog.txt")
+    @log("logs/mylog.txt")
     def func_test(a, b):
         return a + b
 
     func_test("1", 2)
-    with open("mylog.txt", "r", encoding="utf-8") as file_:
+    with open("logs/mylog.txt", "r", encoding="utf-8") as file_:
         read_text = file_.readlines()
         assert "Время начала" in read_text[0]
         assert "Время окончания" in read_text[1]
