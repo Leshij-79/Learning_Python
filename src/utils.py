@@ -2,8 +2,9 @@ import csv
 import json
 import logging
 import os
-import pandas as pd
+from typing import Any
 
+import pandas as pd
 
 path_log_directory = os.path.join(os.path.dirname(__file__), "../logs", "utils.log")
 logger = logging.getLogger(__name__) if __name__ != "__main__" else logging.getLogger("src.utils")
@@ -32,6 +33,7 @@ def json_file_processing(file_name: str) -> list:
         logger.info("Получены данные по транзакциям из json-файла")
         return data
 
+
 def read_transaction_csv(file_name: str, delimiter: str = ",") -> list[dict]:
     """
     Функция чтения данных по транзакциям из csv-файла
@@ -50,7 +52,8 @@ def read_transaction_csv(file_name: str, delimiter: str = ",") -> list[dict]:
 
     return reader
 
-def read_transaction_excel(file_name: str)-> list[dict]:
+
+def read_transaction_excel(file_name: str) -> list[dict[Any, Any]]:
     """
     Функция чтения данных транзакций из xlsx-файла
     :param file_name: путь к xlsx-файлу в формате str
@@ -59,10 +62,10 @@ def read_transaction_excel(file_name: str)-> list[dict]:
     try:
         excel_data = pd.read_excel(file_name)
         logger.info("Данные с xlsx-файла прочитаны")
-        return excel_data.to_dict('records')
+        return excel_data.to_dict("records")
     except FileNotFoundError:
         logger.critical("XLSX-файл не найден")
         return []
 
 
-print(read_transaction_excel('../data/transactions_excel.xlsx'))
+print(read_transaction_excel("../data/transactions_excel.xlsx"))

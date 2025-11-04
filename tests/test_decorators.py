@@ -4,12 +4,12 @@ from src.decorators import log
 
 
 def test_log_file() -> None:
-    @log("logs/mylog.txt")
-    def func_test(a, b) -> Any:
+    @log("logs/mylog.log")
+    def func_test(a: Any, b: Any) -> Any:
         return a + b
 
     func_test("1", "2")
-    with open("logs/mylog.txt", "r", encoding="utf-8") as file_:
+    with open("logs/mylog.log", "r", encoding="utf-8") as file_:
         read_text = file_.readlines()
         assert "Время начала" in read_text[0]
         assert "Время окончания" in read_text[1]
@@ -18,12 +18,12 @@ def test_log_file() -> None:
 
 
 def test_log_file_error() -> Any:
-    @log("logs/mylog.txt")
-    def func_test(a, b):
+    @log("logs/mylog.log")
+    def func_test(a: Any, b: Any) -> Any:
         return a + b
 
     func_test("1", 2)
-    with open("logs/mylog.txt", "r", encoding="utf-8") as file_:
+    with open("logs/mylog.log", "r", encoding="utf-8") as file_:
         read_text = file_.readlines()
         assert "Время начала" in read_text[0]
         assert "Время окончания" in read_text[1]
@@ -32,7 +32,7 @@ def test_log_file_error() -> Any:
 
 def test_log_consol(capsys) -> None:
     @log("")
-    def func_test(a, b):
+    def func_test(a: Any, b: Any) -> Any:
         return a + b
 
     func_test("1", "2")
@@ -47,7 +47,7 @@ def test_log_consol(capsys) -> None:
 
 def test_log_consol_error(capsys) -> None:
     @log("")
-    def func_test(a, b):
+    def func_test(a: Any, b: Any) -> Any:
         return a + b
 
     func_test("1", 2)

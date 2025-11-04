@@ -4,7 +4,7 @@ import requests
 from dotenv import load_dotenv
 
 
-def transaction_processing(transaction: dict) -> float:
+def transaction_processing(transaction: dict) -> float | None:
     """
     Функция обработки транзакции - конвертация суммы операции в российские рубли
     """
