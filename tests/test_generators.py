@@ -1,6 +1,7 @@
 import pytest
 
-from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
+from src.generators import (card_number_generator, filter_by_currency, filter_by_currency_csv_excel,
+                            transaction_descriptions)
 
 
 @pytest.mark.parametrize(
@@ -33,11 +34,60 @@ from src.generators import card_number_generator, filter_by_currency, transactio
     ],
 )
 def test_filter_by_currency(fixture_test_generator_transactions: list, currency: str, expected: list) -> None:
-
+    """
+    Тестирование функции фильтрации транзакций по заданной валюте файла json
+    """
     filter_generator = list(filter_by_currency(fixture_test_generator_transactions, currency))
     assert filter_generator == expected
 
     filter_generator_second = list(filter_by_currency([], currency))
+    assert filter_generator_second == [[]]
+
+
+@pytest.mark.parametrize(
+    "currency, expected",
+    [
+        (
+            "USD",
+            [
+                {
+                    "id": 939719570,
+                    "state": "EXECUTED",
+                    "date": "2018-06-30T02:08:58.425572",
+                    "amount": "9824.07",
+                    "currency_name": "USD",
+                    "currency_code": "USD",
+                    "description": "Перевод организации",
+                    "from": "Счет 75106830613657916952",
+                    "to": "Счет 11776614605963066702",
+                },
+                {
+                    "id": 142264268,
+                    "state": "EXECUTED",
+                    "date": "2019-04-04T23:20:05.206878",
+                    "amount": "79114.93",
+                    "currency_name": "USD",
+                    "currency_code": "USD",
+                    "description": "Перевод со счета на счет",
+                    "from": "Счет 19708645243227258542",
+                    "to": "Счет 75651667383060284188",
+                },
+            ],
+        ),
+        ("RUR", []),
+    ],
+)
+def test_filter_by_currency_csv_excel(
+    fixture_test_generator_transactions_csv_excel: list, currency: str, expected: list
+) -> None:
+    """
+    Тестирование функции фильтрации транзакций по заданной валюте файла csv и excel
+    """
+
+    filter_generator = list(filter_by_currency_csv_excel(fixture_test_generator_transactions_csv_excel, currency))
+    assert filter_generator == expected
+
+    filter_generator_second = list(filter_by_currency_csv_excel([], currency))
     assert filter_generator_second == [[]]
 
 

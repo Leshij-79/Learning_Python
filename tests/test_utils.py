@@ -96,3 +96,9 @@ def test_read_transaction_excel(mock_pd_read_excel) -> Any:
     mock_pd_read_excel.return_value = pd.DataFrame(data_mock_for_test)
     result = read_transaction_excel("")
     assert result == data_mock_for_test
+
+
+def test_read_transaction_excel_error() -> Any:
+    """Тестирование excel-файла при ошибочном имени"""
+
+    assert read_transaction_excel("") == []
