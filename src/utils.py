@@ -66,6 +66,3 @@ def read_transaction_excel(file_name: str) -> list[dict[Any, Any]]:
     except FileNotFoundError:
         logger.critical("XLSX-файл не найден")
         return []
-
-
-print(read_transaction_excel("../data/transactions_excel.xlsx"))
