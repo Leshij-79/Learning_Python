@@ -19,11 +19,15 @@ def json_file_processing(file_name: str) -> list:
     """
     Функция получения данных по транзакциям из json-файла
     """
+    path_json_file = os.path.join(os.path.dirname(__file__), file_name)
     try:
-        with open(file_name, "r", encoding="utf-8") as json_file:
+        with open(path_json_file, "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
     except FileNotFoundError:
         logger.critical("Файл json не найден")
+        logger.critical(file_name)
+        logger.critical(os.path.dirname(__file__))
+        logger.critical(path_json_file)
         return []
 
     if len(data) == 0 or type(data) is not list:
@@ -41,8 +45,9 @@ def read_transaction_csv(file_name: str, delimiter: str = ",") -> list[dict]:
     :param delimiter: Принимает разделитель данных в csv-файле в формате str. По-умолчанию ','
     :return: Список словарей list[dict]
     """
+    path_csv_file = os.path.join(os.path.dirname(__file__), file_name)
     try:
-        with open(file_name, "r", encoding="utf-8") as csv_file:
+        with open(path_csv_file, "r", encoding="utf-8") as csv_file:
             reader = list(csv.DictReader(csv_file, delimiter=delimiter))
             logger.info("Данные с csv-файла прочитаны")
 
@@ -59,13 +64,11 @@ def read_transaction_excel(file_name: str) -> list[dict[Any, Any]]:
     :param file_name: путь к xlsx-файлу в формате str
     :return: список словарей list[dict]
     """
+    path_excel_file = os.path.join(os.path.dirname(__file__), file_name)
     try:
-        excel_data = pd.read_excel(file_name)
+        excel_data = pd.read_excel(path_excel_file)
         logger.info("Данные с xlsx-файла прочитаны")
         return excel_data.to_dict("records")
     except FileNotFoundError:
         logger.critical("XLSX-файл не найден")
         return []
-
-
-print(read_transaction_excel("../data/transactions_excel.xlsx"))

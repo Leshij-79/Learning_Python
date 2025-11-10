@@ -15,6 +15,20 @@ def filter_by_currency(data: list[dict], currency: str) -> Generator:
                 yield item
 
 
+def filter_by_currency_csv_excel(data: list[dict], currency: str) -> Generator:
+    """
+    Фильтрация транзакций по заданной валюте
+    """
+    counter_ = 0
+    if data == []:
+        yield []
+    else:
+        for item in data:
+            if item["currency_code"] == currency:
+                counter_ += 1
+                yield item
+
+
 def transaction_descriptions(data: list[dict]) -> Generator:
     """
     Функция вывода информации о назначении платежа по транзакции
